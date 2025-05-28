@@ -28,6 +28,11 @@ jobs:
       # setup pyton env
       - name: Setup Python
         uses: actions/setup-python@v5.6.0
+        with:
+          # Semantic version range syntax or exact version of a Python version
+          python-version: '3.x'
+          # Optional - x64 or x86 architecture, defaults to x64
+          architecture: 'x64'
 
       - name: Display Python version
         run: python -c "import sys; print(sys.version)"
