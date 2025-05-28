@@ -25,6 +25,13 @@ jobs:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v4
 
+      # setup pyton env
+      - name: Setup Python
+        uses: actions/setup-python@v5.6.0
+
+      - name: Display Python version
+        run: python -c "import sys; print(sys.version)"
+
       # Runs a single command using the runners shell
       - name: Run a one-line script
         run: echo Hello, world!
