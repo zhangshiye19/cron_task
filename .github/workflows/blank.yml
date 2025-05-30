@@ -9,6 +9,10 @@ on:
     branches: [ "main" ]
   pull_request:
     branches: [ "main" ]
+  # 添加定时触发
+  schedule:
+    # 每天早上8点运行 (UTC时间，对应北京时间16点)
+    - cron: '0 8 * * *'
 
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
@@ -37,12 +41,16 @@ jobs:
       - name: Display Python version
         run: python -c "import sys; print(sys.version)"
 
-      # Runs a single command using the runners shell
-      - name: Run a one-line script
-        run: echo Hello, world!
-
-      # Runs a set of commands using the runners shell
-      - name: Run a multi-line script
+      # 安装依赖
+      - name: Install dependencies
         run: |
-          echo Add other actions to build,
-          echo test, and deploy your project.
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+
+      # 执行定时任务脚本
+      - name: Run cron task
+        run: python direct_call.py
+        env:
+          # 如果需要设置环境变量，可以在这里添加
+          PYTHONUNBUFFERED: 1
+

@@ -1,0 +1,11 @@
+flask
+certifi==2025.4.26
+charset-normalizer==3.4.2
+idna==3.10
+requests==2.31.0
+schedule==1.2.2
+urllib3==1.26.8
+chinese-calendar==1.10.0
+--index-url http://pypi.sankuai.com/simple
+--trusted-host pypi.sankuai.com
+sts-sdk==0.3
