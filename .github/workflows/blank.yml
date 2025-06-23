@@ -41,16 +41,3 @@ jobs:
       - name: Display Python version
         run: python -c "import sys; print(sys.version)"
 
-      # 安装依赖
-      - name: Install dependencies
-        run: |
-          python -m pip install --upgrade pip
-          pip install -r requirements.txt
-
-      # 执行定时任务脚本
-      - name: Run cron task
-        run: python direct_call.py
-        env:
-          # 如果需要设置环境变量，可以在这里添加
-          PYTHONUNBUFFERED: 1
-
